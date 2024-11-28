@@ -1,0 +1,61 @@
+//class product
+class Product {
+  constructor(id, name, price) {
+    this.id = id;
+    this.name = name;
+    this.price = price;
+  }
+}
+
+//shopcartitem
+class ShopingCartItem {
+  // product
+  // quantity
+  constructor(product, quantity) {
+    this.product = product;
+    this.quantity = quantity;
+  }
+}
+
+class ShoppingCart {
+  // items (proprieties) [] ShopingCartItem
+  constructor() {
+    this.items = [];
+  }
+  // addProduct => ajout mta3 product fi west items
+  addProduct(product, quantity) {
+    // push [p1,p2] => [p1,p2,p]
+    // unshift [p1,p2] => [p,p1,p2]
+    //push / unshift
+    const item = new ShopingCartItem(product, quantity);
+    this.items.push(item);
+    // this.items.unshift(p);
+    // //ES6
+    // this.items = [...this.items, p]; //push
+    // this.items = [p, ...this.items]; //unshift
+  }
+  // removeProduct => na7i product
+  removeProduct(idproduct) {
+    this.items = this.items.filter((item) => item.product.id !== idproduct);
+  }
+  // DisplayCART
+  displayCart() {
+    this.items.forEach((item) => {
+      console.log(
+        name: ${item.product.name} ===> price : ${item.product.price} ===> quantity : ${item.quantity}
+      );
+    });
+  }
+  // product => prix
+}
+
+// instance product
+const product1 = new Product(0, "laptop", 1000);
+const product2 = new Product(1, "phone", 200);
+const product3 = new Product(2, "ananas", 5);
+
+const cart = new ShoppingCart();
+cart.addProduct(product1, 5);
+cart.addProduct(product2, 1);
+
+cart.displayCart();
